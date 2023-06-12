@@ -1,0 +1,56 @@
+
+
+.content{
+    width: 60%;
+    margin: 0 auto;
+}
+
+input[type=text]{
+    padding: 5px 10px;
+    width: 60%;
+    letter-spacing: 1px;
+}
+
+body {
+    background-color: rgb(16, 16, 16);
+}
+
+input[type=submit]{
+    padding: 5px 15px;
+    letter-spacing: 1px;
+    border: 0;
+    background: gold;
+    color: black;
+    font-weight: bold;
+    font-size: 17px;
+}
+
+h1{
+    border-bottom: 1px solid gray;
+}
+
+h2{
+    color: white;
+}
+h2 a{
+    color: #f36100;
+    text-decoration: none;
+}
+
+.post{
+    border: 1px solid gray;
+    padding: 10px;
+    border-radius: 10px;
+    margin-top: 15px;
+}
+
+.post-head span{
+    font-size: 14px;
+    color: gray;
+    letter-spacing: 1px;
+}
+
+.post-content{
+    font-size: 18px;
+    color: white;
+}

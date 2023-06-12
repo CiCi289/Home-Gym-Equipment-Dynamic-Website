@@ -1,0 +1,387 @@
+-- phpMyAdmin SQL Dump
+-- version 5.1.3
+-- https://www.phpmyadmin.net/
+--
+-- Host: 127.0.0.1
+-- Generation Time: Jul 24, 2022 at 04:28 AM
+-- Server version: 10.4.24-MariaDB
+-- PHP Version: 8.1.4
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Database: `home_gym_equipment`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `booking`
+--
+
+CREATE TABLE `booking` (
+  `BookingID` int(11) NOT NULL,
+  `BookingName` varchar(150) DEFAULT NULL,
+  `BookingEmail` varchar(255) DEFAULT NULL,
+  `BookingMessage` text DEFAULT NULL,
+  `BookingTimestamp` timestamp NOT NULL DEFAULT current_timestamp(),
+  `BookingReasonID` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `booking`
+--
+
+INSERT INTO `booking` (`BookingID`, `BookingName`, `BookingEmail`, `BookingMessage`, `BookingTimestamp`, `BookingReasonID`) VALUES
+(1, 'David', 'David123@gmail.com', '', '2022-06-22 09:19:32', 3),
+(2, 'Ci Ci', 'cihtinaung289.cha@gmail.com', 'Hello, HGE. I have a broken reflex boxing balls to fix. May i know whether you fix these equipment or not?', '2022-06-22 09:22:19', 1),
+(3, 'Shwe Shwe', 'ShweShwe1510@gmail.com', 'Hello. I have an broken Threadmill to be fixed. May i know do u fix these?', '2022-07-18 16:18:27', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `bookingreason`
+--
+
+CREATE TABLE `bookingreason` (
+  `BookingReasonID` int(11) NOT NULL,
+  `BookingReasonName` varchar(40) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `bookingreason`
+--
+
+INSERT INTO `bookingreason` (`BookingReasonID`, `BookingReasonName`) VALUES
+(1, 'Gym Equipment Repair'),
+(2, 'Fitness Education Class'),
+(3, 'Exercise Training Class');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `contactus`
+--
+
+CREATE TABLE `contactus` (
+  `ContactID` int(11) NOT NULL,
+  `ContactName` varchar(150) DEFAULT NULL,
+  `ContactEmail` varchar(255) DEFAULT NULL,
+  `ContactMessage` text DEFAULT NULL,
+  `ContactTimestamp` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `contactus`
+--
+
+INSERT INTO `contactus` (`ContactID`, `ContactName`, `ContactEmail`, `ContactMessage`, `ContactTimestamp`) VALUES
+(1, 'Ci Ci', 'cihtinaung289.cha@gmail.com', 'Hello, HGE. May i know if u have replacement rubber strings for my broken Threadmill? Thanks!', '2022-06-07 06:33:48'),
+(2, 'Maung Maung', 'MgMg@gmail.com', 'Hi, HGE. May i know if u have any Gym Master Trainer classes?Waiting for your contact :)', '2022-06-07 06:34:58'),
+(3, 'Hla Hla', 'HlaHla@gmail.com', 'Hello, HGE. Will there be any specific Gym classes grouped with girls only in the future? Let me know. :)\r\n', '2022-06-07 06:35:42'),
+(4, 'David Thompson', 'davidTS@gmail.com', 'Hello, HGE. I am a certified gym trainer living in Myanmar. Let me know if u need any new gym trainers at your gym. For more contacts, here is my email: davidTS@gmail.com ', '2022-06-07 06:36:07'),
+(5, 'Joey', 'Joey234@gmail.com', 'Hi, HGE. May i know if your workshop services open on public holidays? I got some rubber bands from my weight lift to fix. But I\'m only free on these days. Waitin\' for your reply. :)\r\n', '2022-06-07 06:36:30'),
+(6, 'Ci Ci', 'cihtinaung289.cha@gmail.com', 'Hello again, HGE.  I\'m here to say Thank you for your awesome workshop repairs on my broken equipment . :) Keep up the good work!', '2022-06-07 06:36:48'),
+(7, 'CiCi', 'cihtinaung289.cha@gmail.com', 'Hello, HGE. May I know if you have reflex boxing balls as second hand product in stock to sell? Thanks! I\'m willing to buy these.', '2022-06-14 15:52:25');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `customer`
+--
+
+CREATE TABLE `customer` (
+  `CustomerID` int(11) NOT NULL,
+  `CustomerFirstName` varchar(150) DEFAULT NULL,
+  `CustomerSurName` varchar(150) DEFAULT NULL,
+  `CustomerPhone` varchar(200) DEFAULT NULL,
+  `CustomerAddress` varchar(255) DEFAULT NULL,
+  `CustomerEmail` varchar(255) DEFAULT NULL,
+  `CustomerPassword` varchar(255) DEFAULT NULL,
+  `CustomerProfile` text DEFAULT NULL,
+  `ViewCount` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `customer`
+--
+
+INSERT INTO `customer` (`CustomerID`, `CustomerFirstName`, `CustomerSurName`, `CustomerPhone`, `CustomerAddress`, `CustomerEmail`, `CustomerPassword`, `CustomerProfile`, `ViewCount`) VALUES
+(1, 'Ci Htin', 'Aung', '09756970487', 'No.15/201, Aungthapyay Street', 'cihtinaung289.cha@gmail.com', 'cici289', 'image/_MaleProfile.png', 27),
+(3, 'Shwe', 'Lay', '09696969696', 'Ahlone', 'shwelay@gmail.com', 'shwelay1510', 'image/_3131808.png', 4);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `product`
+--
+
+CREATE TABLE `product` (
+  `ProductID` int(11) NOT NULL,
+  `ProductName` varchar(255) DEFAULT NULL,
+  `ProductPrice` decimal(10,2) DEFAULT NULL,
+  `ProductQuantity` int(11) DEFAULT NULL,
+  `ProductImage1` text DEFAULT NULL,
+  `ProductImage2` text DEFAULT NULL,
+  `ProductDescription` text DEFAULT NULL,
+  `ProductTypeID` int(11) DEFAULT NULL,
+  `ProductCategoryID` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `product`
+--
+
+INSERT INTO `product` (`ProductID`, `ProductName`, `ProductPrice`, `ProductQuantity`, `ProductImage1`, `ProductImage2`, `ProductDescription`, `ProductTypeID`, `ProductCategoryID`) VALUES
+(1, 'Bowflex SelectTech 552 Adjustable Dumbbells', '699.00', 20, 'image/_Bowflex SelectTech 552 Adjustable Dumbbell.jpg', 'image/_Bowflex SelectTech 552 Adjustable Dumbbell 1.jpg', 'Replaces 15 sets of weights. Weights adjust from 2.5 to 25 pounds. Easy-to-use selection dials for adjusting weights. Sold as a pair.\n\n• Height: ‎14 inches\n• Hand Orientation: ‎Left and Right\n• Compatible Products: Bowflex SelectTech Stand with Media Rack\n', 1, 3),
+(2, 'Bowflex SelectTech 552 Adjustable Dumbbells (Second Hand)', '450.00', 15, 'image/_Bowflex SelectTech 552 Adjustable Dumbbell.jpg', 'image/_Bowflex SelectTech 552 Adjustable Dumbbell 1.jpg', 'Replaces 15 sets of weights. Weights adjust from 2.5 to 25 pounds. Easy-to-use selection dials for adjusting weights. Sold as a pair.\r\n\r\n• Second Hand product\r\n• Height: ‎14 inches\r\n• Hand Orientation: ‎Left and Right\r\n• Compatible Products: Bowflex SelectTech Stand with Media Rack\r\n', 2, 3),
+(3, 'Yes4All Multifunctional Fitness Aerobic Step Platform (Second Hand)', '223.44', 18, 'image/_Yes4All Multifunctional Fitness Aerobic Step Platform.jpg', 'image/_Yes4All Multifunctional Fitness Aerobic Step Platform1.jpg', 'STRONG & DURABLE MATERIALS: Professional Aerobic Deck is made of sturdy & dense plastic for total body strength and cardio workouts; It is a versatile tool that can be used as a weight bench step plyometric and ramp; Support up to 300 lbs.\r\n\r\nADJUSTABLE HEIGHTS FOR DIFFERENT PURPOSES: 2 level adjustable height, 3 angle positions including incline, decline and flat, 4 adjustable bracket angle.\r\n\r\nANTI-SLIP TEXTURED SURFACE: Provide a slip resistant surface for you to practice on with extra safety and comfort; TPE grip feet provides a solid workout platform that stays stable during workout.\r\n\r\nSAVE UP SPACE & EASY TO FOLD: Compact and foldable design allows you to use at home, gym easily.', 2, 2),
+(4, 'Garmin vivomove Sport Hybrid Smartwatch', '255.00', 18, 'image/_Garmin Vivomove Sport1.jpg', 'image/_Garmin Vivomove Sport2.jpg', 'Stylish 40 mm hybrid smartwatch with timeless analog look and smart features. Hidden touchscreen display reacts to your movements and is visible only when you need it.\r\n•Stay connected with smart notifications for incoming calls, text messages, calendar view and more when paired with your compatible smartphone.\r\n•Know your body better with extensive health monitoring features, including Body Battery energy levels, Pulse Ox, advanced sleep monitoring, stress tracking, women’s health tracking and more (this device is intended to be an estimation of your activity and metrics; it is not a medical device and is not intended for use in the diagnosis or monitoring of any medical condition).\r\n•Connects with your paired smartphone’s GPS to track outdoor walk or run activities; includes additional activity profiles such as yoga, strength, cardio and more.\r\nSafety and tracking features include Incident Detection (during outdoor walks, runs and bike rides) and Assistance, both of which send a message with your live location to emergency contacts.', 1, 4),
+(5, 'Garmin Venu 2 Plus Smartwatch', '600.00', 19, 'image/_Garmin Venu 2 Plus1.jpg', 'image/_Garmin Venu 2 Plus2.jpg', 'Understand your body better with advanced health and fitness features.\r\n• Enjoy the convenience of making calls from your wrist.\r\n• A crystal-clear AMOLED display brings this watch to life.\r\n• Comfortable silicone band, this smartwatch is ready for anything. You can wear it all day, and it can track your activities.\r\n• Know your body better with extensive health monitoring features, including the Health Snapshot feature, Body Battery energy levels, sleep score and insights, fitness age, stress tracking and more.', 1, 4),
+(6, 'Skagen Falster Gen 6 Smartwatch', '295.00', 15, 'image/_Skagen Falster Gen 6 1.jpg', 'image/_Skagen Falster Gen 6 2.jpg', '• Always on Display now brighter with more colors. Thousands of watch faces to personalize your look and always see the time. Hundreds of apps from assistant to fitness, payments, music, social, news, games, stop watches, and more.\r\n• Automatically tracks activity goals, steps, sleep, heart rate, cardio level, SPO2 (blood oxygen), and more. Activity modes with GPS keep you on track with your distance and path. Advanced sensors provide the data to power all your health and fitness apps.\r\n• Agenda, Alarm, Amazon Alexa for Smartwatches (available in select markets), Battery-Optimized Activity Mode, Calendar, Cardio Level Tracking, Cardiogram, Contacts, Enhanced Phone Dialer App, Facer, Google Assistant, Google Fit (Workout, Heart Rate, Goals, Breathe), Google Maps\r\n', 1, 4),
+(7, 'Women UA TriBase Reign 4 Training Shoes', '75.00', 17, 'image/_Women UA TriBase Reign 4 Training Shoes1.jpg', 'image/_Women UA TriBase Reign 4 Training Shoes2.jpg', 'The better your contact with the floor during your workouts, the better those workouts are going to be. The low, stable triangular base of the UA TriBase™ tech will help you through every rep, set, and WOD.\r\n• Lightweight, breathable mesh with built-in durability & abrasion-resistance material\r\n• External heel clip & internal heel counter for added stability & support\r\n• Strategic zones of flexibility & traction in the forefoot give you greater mobility & added grip where you need it\r\n• Full-length Micro G® foam midsole for the ultimate in responsive cushioning\r\n• UA TriBase™ maximizes ground contact, promotes natural motion & provides flexibility to grip during lifts\r\n• Full-rubber outsole wraps up the sides for durability & added abrasion resistance with medial rope grip\r\n• Strategic rubber build under the toe box for a more powerful floor grip\r\n• Low to the ground build allows for greater feel & power transfer', 1, 5),
+(8, 'Men Project Rock 4 Team Rock Training Shoes', '80.00', 16, 'image/_Men Project Rock 4 Team Rock Training Shoes1.jpg', 'image/_Men Project Rock 4 Team Rock Training Shoes2.jpg', 'Project Rock training gear was built to help you find boundaries, then push right through them. Everything in this collection was personally approved by Dwayne Johnson, the hardest worker in the room. ANY room.\r\n• Lightweight, breathable engineered mesh upper with stretch & structure where you need it\r\n• Plush knit collar for maximum comfort\r\n• Medial & lateral TPU midfoot strap for lockdown during even the most demanding workouts\r\n• External TPU heel clip helps stabilize the heel for dynamic movements\r\n• Anatomical sockliner provides maximum comfort underfoot\r\n• Responsive UA HOVR™ cushioning reduces impact, returns energy & helps propel you forward\r\n• UA TriBase™ maximizes ground contact, promotes natural motion & provides flexibility to grip during lifts', 1, 5),
+(9, 'Unisex Grade School Project Rock 3 Training Shoes', '80.00', 15, 'image/_Grade School Project Rock 3 Training Shoes1.jpg', 'image/_Grade School Project Rock 3 Training Shoes2.jpg', 'Project Rock training gear was built to help you find boundaries, then push right through them. These kids crossfit shoes, like everything in this collection, were approved by Dwayne Johnson, the hardest worker in any room.\r\n• Responsive UA HOVR™ cushioning reduces impact, returns energy & helps propel you forward\r\n• Upper is extremely comfortable & durable, while providing stability & containment where you need it\r\n• Unique lacing structure for a locked-in fit & feel\r\n• Knit bootie design gives you a locked-in but comfortable fit\r\n• External heel counter for added support\r\n• Full rubber outsole for elevated traction & durability', 1, 5),
+(10, 'Men UA RUSH ColdGear Seamless Leggings', '40.00', 12, 'image/_Men UA RUSH ColdGear Seamless Leggings1.jpg', 'image/_Men UA RUSH ColdGear Seamless Leggings2.jpg', 'UA RUSH is the gear you wear when it matters most—your toughest workouts, your biggest games, your most intense training. It fits great, keeps you dry, and makes you feel like you can crush every PR.\r\n• UA RUSH is infrared technology that reflects your body energy to help you work harder & recover faster\r\n• Super-soft ColdGear fabric is breathable & stretches for superior mobility but is still incredibly warm\r\n• Body-mapped, nearly sew-free construction is super-smooth next to skin & helps eliminate chafing\r\n• Material wicks sweat & dries really fast\r\n• Jacquard elastic waistband with raised texture', 1, 6),
+(11, 'Men UA Knit Performance Training Shorts', '20.00', 15, 'image/_Men UA Knit Performance Training Shorts1.jpg', 'image/_Men UA Knit Performance Training Shorts2.jpg', 'These have a softer, stretchier feel than woven shorts, but all the same quick-drying action to keep you feeling cooler in the heat.\r\n• Textured knit fabric is light, tough & breathable\r\n• Material wicks sweat & dries really fast\r\n• Encased elastic waistband with internal drawcord adjust\r\n• Open hand pockets\r\n• Shaped bottom hem', 1, 6),
+(12, 'Women UA RUSH SmartForm Mid Sports Bra', '20.00', 17, 'image/_Women UA RUSH SmartForm Mid Sports Bra1.jpg', 'image/_Women UA RUSH SmartForm Mid Sports Bra2.jpg', 'We broke the mold of what bras have always been by creating one that literally adapts to the unique contours of your body to create a truly one-of-a-kind fit and a whole new feeling of support.\r\n• Delivers strategic support, tailored for medium-impact activities like cycling, weight training & boxing\r\n• As your body emits energy, the mineral-infused fabric absorbs & reflects it back, improving endurance\r\n• Interior auxetic jacquard molds to you for customized fit & support\r\n• Strategic mesh panels for added breathability where you need it\r\n• Crossback design features bonded freecut fabric that is super-smooth & comfortable\r\nMaterial wicks sweat & dries really fast', 1, 6);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `productcategory`
+--
+
+CREATE TABLE `productcategory` (
+  `ProductCategoryID` int(11) NOT NULL,
+  `ProductCategoryName` varchar(40) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `productcategory`
+--
+
+INSERT INTO `productcategory` (`ProductCategoryID`, `ProductCategoryName`) VALUES
+(1, 'Weights'),
+(2, 'Bench'),
+(3, 'Dumbbell'),
+(4, 'Wearable Technology-Smartwatches'),
+(5, 'Wearable Technology-Shoes'),
+(6, 'Wearable Technology-Gym Wears');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `productenquiry`
+--
+
+CREATE TABLE `productenquiry` (
+  `ProductEnquiryID` int(11) NOT NULL,
+  `ProductEnquiryName` varchar(150) DEFAULT NULL,
+  `ProductEnquiryEmail` varchar(255) DEFAULT NULL,
+  `ProductEnquiryMessage` text DEFAULT NULL,
+  `ProductEnquiryTimestamp` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `productenquiry`
+--
+
+INSERT INTO `productenquiry` (`ProductEnquiryID`, `ProductEnquiryName`, `ProductEnquiryEmail`, `ProductEnquiryMessage`, `ProductEnquiryTimestamp`) VALUES
+(1, 'Ci Ci', 'cihtinaung289.cha@gmail.com', 'Hello, HGE. May I know if you have reflex boxing balls as second hand product in stock to sell? Thanks! I\'m willing to buy these.', '2022-06-14 15:54:45'),
+(2, 'Ci Ci', 'cihtinaung289.cha@gmail.com', 'Hello, HGE. May I know if you have string reflex boxing balls as second hand product available to sell? Thanks! I\'m willing to buy these. ', '2022-07-02 19:38:21'),
+(3, 'Ci Htin Aung', 'cihtinaung289.cha@gmail.com', 'Hello. May i know if you have second hand Smartwatches? Thanks!', '2022-07-18 16:09:41');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `producttype`
+--
+
+CREATE TABLE `producttype` (
+  `ProductTypeID` int(11) NOT NULL,
+  `ProductTypeName` varchar(30) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `producttype`
+--
+
+INSERT INTO `producttype` (`ProductTypeID`, `ProductTypeName`) VALUES
+(1, 'Brand New'),
+(2, 'Second Hand');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `staff`
+--
+
+CREATE TABLE `staff` (
+  `StaffID` int(11) NOT NULL,
+  `StaffName` varchar(70) DEFAULT NULL,
+  `StaffPosition` varchar(50) DEFAULT NULL,
+  `StaffAge` int(11) DEFAULT NULL,
+  `StaffEmail` varchar(200) DEFAULT NULL,
+  `StaffPassword` varchar(255) DEFAULT NULL,
+  `StaffPhone` varchar(200) DEFAULT NULL,
+  `StaffAddress` varchar(255) DEFAULT NULL,
+  `StaffProfile` text DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `staff`
+--
+
+INSERT INTO `staff` (`StaffID`, `StaffName`, `StaffPosition`, `StaffAge`, `StaffEmail`, `StaffPassword`, `StaffPhone`, `StaffAddress`, `StaffProfile`) VALUES
+(1, 'Ci Ci', 'Database Admin', 22, 'cihtinaung289.cha@gmail.com', 'cici289', '09756970487', 'Back side of Yuzana Plaza', 'image/_Cat.png'),
+(2, 'Shwe Lay', 'Database Admin', 22, 'shwelay@gmail.com', 'shwelay1510', '09755116169', 'Sapal Street, Ahlone Tsp', 'image/_Cat2.png');
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `booking`
+--
+ALTER TABLE `booking`
+  ADD PRIMARY KEY (`BookingID`),
+  ADD KEY `BookingReasonID` (`BookingReasonID`);
+
+--
+-- Indexes for table `bookingreason`
+--
+ALTER TABLE `bookingreason`
+  ADD PRIMARY KEY (`BookingReasonID`);
+
+--
+-- Indexes for table `contactus`
+--
+ALTER TABLE `contactus`
+  ADD PRIMARY KEY (`ContactID`);
+
+--
+-- Indexes for table `customer`
+--
+ALTER TABLE `customer`
+  ADD PRIMARY KEY (`CustomerID`);
+
+--
+-- Indexes for table `product`
+--
+ALTER TABLE `product`
+  ADD PRIMARY KEY (`ProductID`),
+  ADD KEY `ProductTypeID` (`ProductTypeID`),
+  ADD KEY `ProductCategoryID` (`ProductCategoryID`);
+
+--
+-- Indexes for table `productcategory`
+--
+ALTER TABLE `productcategory`
+  ADD PRIMARY KEY (`ProductCategoryID`);
+
+--
+-- Indexes for table `productenquiry`
+--
+ALTER TABLE `productenquiry`
+  ADD PRIMARY KEY (`ProductEnquiryID`);
+
+--
+-- Indexes for table `producttype`
+--
+ALTER TABLE `producttype`
+  ADD PRIMARY KEY (`ProductTypeID`);
+
+--
+-- Indexes for table `staff`
+--
+ALTER TABLE `staff`
+  ADD PRIMARY KEY (`StaffID`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `booking`
+--
+ALTER TABLE `booking`
+  MODIFY `BookingID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `bookingreason`
+--
+ALTER TABLE `bookingreason`
+  MODIFY `BookingReasonID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `contactus`
+--
+ALTER TABLE `contactus`
+  MODIFY `ContactID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
+-- AUTO_INCREMENT for table `customer`
+--
+ALTER TABLE `customer`
+  MODIFY `CustomerID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT for table `product`
+--
+ALTER TABLE `product`
+  MODIFY `ProductID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+
+--
+-- AUTO_INCREMENT for table `productcategory`
+--
+ALTER TABLE `productcategory`
+  MODIFY `ProductCategoryID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT for table `productenquiry`
+--
+ALTER TABLE `productenquiry`
+  MODIFY `ProductEnquiryID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `producttype`
+--
+ALTER TABLE `producttype`
+  MODIFY `ProductTypeID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `staff`
+--
+ALTER TABLE `staff`
+  MODIFY `StaffID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `booking`
+--
+ALTER TABLE `booking`
+  ADD CONSTRAINT `booking_ibfk_1` FOREIGN KEY (`BookingReasonID`) REFERENCES `bookingreason` (`BookingReasonID`);
+
+--
+-- Constraints for table `product`
+--
+ALTER TABLE `product`
+  ADD CONSTRAINT `product_ibfk_1` FOREIGN KEY (`ProductTypeID`) REFERENCES `producttype` (`ProductTypeID`),
+  ADD CONSTRAINT `product_ibfk_2` FOREIGN KEY (`ProductCategoryID`) REFERENCES `productcategory` (`ProductCategoryID`);
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
